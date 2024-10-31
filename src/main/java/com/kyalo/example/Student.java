@@ -1,5 +1,6 @@
 package com.kyalo.example;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -21,6 +22,17 @@ public class Student {
     private int age;
     @Column(updatable = false)
     private LocalDateTime createdAt;
+
+    @OneToOne(
+            mappedBy = "student",
+            cascade = CascadeType.ALL  // If student is deleted, profile is also deleted
+    )
+    private StudentProfile profile;
+
+    @ManyToOne
+    @JoinColumn(name = "SCHOOL_ID")
+    @JsonBackReference
+    private School school;
 
     public Student() {
     }
@@ -78,5 +90,21 @@ public class Student {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public StudentProfile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(StudentProfile profile) {
+        this.profile = profile;
+    }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
     }
 }
