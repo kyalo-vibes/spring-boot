@@ -1,6 +1,7 @@
-package com.kyalo.example;
+package com.kyalo.example.school;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.kyalo.example.student.Student;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

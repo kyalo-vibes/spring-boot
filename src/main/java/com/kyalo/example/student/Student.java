@@ -1,6 +1,8 @@
-package com.kyalo.example;
+package com.kyalo.example.student;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.kyalo.example.school.School;
+import com.kyalo.example.studentprofile.StudentProfile;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;

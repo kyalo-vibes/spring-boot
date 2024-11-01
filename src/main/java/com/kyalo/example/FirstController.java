@@ -1,5 +1,7 @@
 package com.kyalo.example;
 
+import com.kyalo.example.order.Order;
+import com.kyalo.example.order.OrderRecord;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

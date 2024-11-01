@@ -1,6 +1,4 @@
-package com.kyalo.example;
-
-import java.time.LocalDateTime;
+package com.kyalo.example.student;
 
 public record StudentResponseDto(
         String firstName,

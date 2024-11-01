@@ -1,4 +1,4 @@
-package com.kyalo.example;
+package com.kyalo.example.student;
 
 public record StudentDto(
         String firstName,

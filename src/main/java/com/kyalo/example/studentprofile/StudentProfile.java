@@ -1,5 +1,6 @@
-package com.kyalo.example;
+package com.kyalo.example.studentprofile;
 
+import com.kyalo.example.student.Student;
 import jakarta.persistence.*;
 
 @Entity

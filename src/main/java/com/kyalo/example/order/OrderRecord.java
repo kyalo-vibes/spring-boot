@@ -1,4 +1,4 @@
-package com.kyalo.example;
+package com.kyalo.example.order;
 
 public record OrderRecord(
         String customerName,

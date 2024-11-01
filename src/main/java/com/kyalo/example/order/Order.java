@@ -1,4 +1,4 @@
-package com.kyalo.example;
+package com.kyalo.example.order;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

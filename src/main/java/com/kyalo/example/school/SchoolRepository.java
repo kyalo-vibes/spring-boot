@@ -1,4 +1,4 @@
-package com.kyalo.example;
+package com.kyalo.example.school;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
