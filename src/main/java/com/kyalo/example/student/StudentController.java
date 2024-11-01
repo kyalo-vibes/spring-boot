@@ -1,7 +1,12 @@
 package com.kyalo.example.student;
 
+import jakarta.validation.Valid;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -24,7 +29,7 @@ public class StudentController {
     //Create student using DTO
     @PostMapping("/students")
     public StudentResponseDto createStudent(
-            @RequestBody StudentDto student) {
+            @Valid @RequestBody StudentDto student) {
         return studentService.createStudent(student);
     }
 
@@ -49,5 +54,19 @@ public class StudentController {
     @DeleteMapping("/students/{id}")
     public void deleteStudent(@PathVariable("id") Integer id) {
         studentService.deleteStudent(id);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<?> handleMethodArgumentNotValidException(
+            MethodArgumentNotValidException ex
+    ) {
+        var errors = new HashMap<String, String>();
+
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            var fieldName = ((FieldError) error).getField();
+            var errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return ResponseEntity.badRequest().body(errors);
     }
 }
