@@ -8,6 +8,9 @@ import java.time.LocalDateTime;
 @Service
 public class StudentMapper {
     public Student toStudent(StudentDto studentDto) {
+        if(studentDto == null) {
+            throw new NullPointerException("The student dto cannot be null");
+        }
         var student = new Student();
         student.setFirstName(studentDto.firstName());
         student.setLastName(studentDto.lastName());
