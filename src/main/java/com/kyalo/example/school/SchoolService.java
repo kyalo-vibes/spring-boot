@@ -27,4 +27,8 @@ public class SchoolService {
                 map(schoolMapper::toSchoolDto)
                 .collect(Collectors.toList());
     }
+
+    public void deleteSchool(Integer id) {
+        schoolRepository.deleteById(id);
+    }
 }

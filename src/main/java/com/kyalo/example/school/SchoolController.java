@@ -1,9 +1,6 @@
 package com.kyalo.example.school;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +25,8 @@ public class SchoolController {
         return schoolService.findAllSchools();
     }
 
-
+    @DeleteMapping("/schools/{id}")
+    public void deleteSchool(@PathVariable("id") Integer id) {
+        schoolService.deleteSchool(id);
+    }
 }
