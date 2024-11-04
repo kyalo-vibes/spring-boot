@@ -115,17 +115,18 @@ class StudentServiceTest {
     @Test
     public void should_return_student_by_name() {
         //given
+        String name = "Kevin";
         Student student1 = new Student("Kevin", "Kyalo", "kevin@gmail.com", 24);
         Student student2 = new Student("Kevin", "Mulwa", "daniel@gmail.com", 15);
         List<Student> students = Arrays.asList(student1, student2);
         StudentResponseDto studentResponseDto1 = new StudentResponseDto("Kevin", "Kyalo", "kevin@gmail.com");
         StudentResponseDto studentResponseDto2 = new StudentResponseDto("Kevin", "Mulwa", "daniel@gmail.com");
         //Mock the calls
-        when(studentRepository.findAllByFirstNameLike("Kevin")).thenReturn(students);
+        when(studentRepository.findAllByFirstNameContaining(name)).thenReturn(students);
         when(studentMapper.toStudentResponseDto(student1)).thenReturn(studentResponseDto1);
         when(studentMapper.toStudentResponseDto(student2)).thenReturn(studentResponseDto2);
         //when
-        List<StudentResponseDto> responseDto = studentService.findStudentByName("Kevin");
+        List<StudentResponseDto> responseDto = studentService.findStudentByName(name);
         //then
         assertEquals(students.size(), responseDto.size());
         assertEquals("Kevin", responseDto.get(0).firstName());
@@ -135,7 +136,7 @@ class StudentServiceTest {
         assertEquals("Mulwa", responseDto.get(1).lastName());
         assertEquals("daniel@gmail.com", responseDto.get(1).email());
 
-        verify(studentRepository, times(1)).findAllByFirstNameLike("Kevin");
+        verify(studentRepository, times(1)).findAllByFirstNameContaining("Kevin");
     }
 
     @Test

@@ -35,7 +35,7 @@ public class StudentService {
     }
 
     public List<StudentResponseDto> findStudentByName(String name) {
-        return studentRepository.findAllByFirstNameLike("%" + name + "%")
+        return studentRepository.findAllByFirstNameContaining(name)
                 .stream()
                 .map(studentMapper::toStudentResponseDto)
                 .collect(Collectors.toList());
