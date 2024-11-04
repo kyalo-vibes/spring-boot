@@ -88,5 +88,3 @@ API Documentation
 ------------------
 
 API documentation is generated using Swagger. Access the API documentation at `http://localhost:8080/swagger-ui.html`.
-
-Note: This README is generated based on the provided context and may not be comprehensive or up-to-date.
